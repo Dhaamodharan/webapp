@@ -1,0 +1,14 @@
+stages:
+  - build_and_push
+
+variables:
+  DOCKER_IMAGE_NAME: "<DOCKER_USER>/webapp:1.2"
+
+before_script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin $DOCKERHUB  
+
+build_and_push:
+  stage: build_and_push
+  script:
+    - docker build -t $DOCKER_IMAGE_NAME .
+    - docker push $DOCKER_IMAGE_NAME
