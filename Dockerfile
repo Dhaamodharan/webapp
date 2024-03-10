@@ -1,4 +1,4 @@
 FROM nginx:latest
-ADD index.html /var/www/html/index.html
+COPY index.html /usr/share/nginx/html/
 EXPOSE 80
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
